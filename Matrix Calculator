@@ -1,0 +1,29 @@
+def matrixMultiply(m1, m2):
+    result=[] #outer list
+    for row in range(len(m1)):
+        rowResult=[] #innerlist
+        rowList = m1[row]
+        colRows= len(m2) #number of rows second matrix
+        cols= len(m2[0]) #number of cols in the second matrix
+        if (len(rowList)) != colRows:#base case
+            return None
+        for col in range(cols): #goes through each row col
+            colList = [ m2[row][col] for row in range(colRows) ]
+            rowResult.append(dotProduct(rowList,colList))
+        result.append(rowResult)
+    return result
+#dot product
+def dotProduct(row, col):
+    tot=0
+    for i in range (min((len(row),len(col)))):
+        mult= (row[i] * col[i])
+        tot += mult
+    return tot
+
+#input your matrix in m1 and m2
+m1 = [[3, 2,],
+ [12, 6]]
+m2 = [[ -3, 1],
+ [ 4, 0]]
+
+print(matrixMultiply(m1,m2))
